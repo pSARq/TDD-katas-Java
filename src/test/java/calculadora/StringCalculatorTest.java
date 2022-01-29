@@ -1,13 +1,16 @@
+package calculadora;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
 
 public class StringCalculatorTest {
+
     public StringCalculator stringCalculatorInstance = new StringCalculator();
     //An empty string returns zero
     @Test
     public void emptyStringTest() throws Exception {
-        assertThat(stringCalculatorInstance.add(""), is(0));
+        assertThat(stringCalculatorInstance.add("   "), is(0));
     }
     // A single number returns the value
     @Test
@@ -54,4 +57,10 @@ public class StringCalculatorTest {
     public void singleCharDelimiterTest() throws Exception {
         assertThat(stringCalculatorInstance.add("#2#1000"), is(1002));
     }
+
+    @Test
+    public void multipleCharDelimiterTest() throws Exception {
+        assertThat(stringCalculatorInstance.add("2[###]1000"), is(1002));
+    }
+
 }
